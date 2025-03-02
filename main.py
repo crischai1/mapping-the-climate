@@ -40,4 +40,4 @@ def image5():
 
 
 if __name__ == '__main__':
-   app.run()
+   app.run(host='10.215.15.59')

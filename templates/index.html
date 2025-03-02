@@ -48,11 +48,13 @@
             } */
             .mb {
                color: black;
+               font-family: 'Lato', sans-serif;
             }
             .title {
                color: black;
                text-align: center;
                font-size: 40px;
+               font-family: 'Lato', sans-serif;
             }
             .centered {
                display: block;
@@ -82,7 +84,7 @@
             minZoom : 9
          }).setView([2100/1000, 2836/1000], 9);
 
-         var imageUrl = 'http://127.0.0.1:5000/image1';
+         var imageUrl = 'http://10.215.15.59:5000/image1';
 
          var imageOverlay = L.imageOverlay(imageUrl, latLngBounds).addTo(map);
          map.fitBounds(latLngBounds);
@@ -94,6 +96,8 @@
       </script>
 
       <hr>
+      <p class="mb">This is a map of annual rain in the US. We wrote a short description for each of the notable locations. You can click to read them below.
+      </p>
 
       <div id="map2"></div>
       <img src="label2" class="imtip">
@@ -106,7 +110,7 @@
             minZoom : 9
          }).setView([1296/1000, 1988/1000], 9);
 
-         var imageUrl = 'http://127.0.0.1:5000/image2';
+         var imageUrl = 'http://10.215.15.59:5000/image2';
 
          var altText = 'YAP';
 
@@ -121,7 +125,7 @@
 
       <hr>
 
-      <p>This is a heatmap displaying the average temperature across the United States. Generally, points closer to the equator tend to be hotter and points further tend to be colder. This is due to the fact that the sun strikes the equator at the sharpest possible angle. Hence, the further a plot is from the equator, the less sharp this striking angle becomes and the less dense the heat is, resulting in a less hot temperature.
+      <p class="mb">This is a heatmap displaying the average temperature across the United States. Generally, points closer to the equator tend to be hotter and points further tend to be colder. This is due to the fact that the sun strikes the equator at the sharpest possible angle. Hence, the further a plot is from the equator, the less sharp this striking angle becomes and the less dense the heat is, resulting in a less hot temperature.
       </p>
 
       <div id="map3"></div>
@@ -134,7 +138,7 @@
             minZoom : 9
          }).setView([1869/1000, 2800/1000], 9);
 
-         var imageUrl = 'http://127.0.0.1:5000/image3';
+         var imageUrl = 'http://10.215.15.59:5000/image3';
 
          var altText = 'YAP';
 
@@ -149,13 +153,13 @@
 
       <img src="label3" class="centered">
       
-         <h3> Donate! </h3> 
+         <h3 class="mb"> Donate! </h3> 
          <a href="https://www.nps.gov/getinvolved/donate.htm">https://www.nps.gov/getinvolved/donate.htm</a> <br>
          <a href="https://act.sierraclub.org/donate/rc_connect__campaign_designform?id=70131000001hPsPAAU&formcampaignid=701Po00000Xrf5FIAR&ddi=N15ZSCZZ04">https://act.sierraclub.org/donate/rc_connect__campaign_designform?id=70131000001hPsPAAU&formcampaignid=701Po00000Xrf5FIAR&ddi=N15ZSCZZ04</a> <br>
          <a href="https://www.thecarboncapturefoundation.org/donate">https://www.thecarboncapturefoundation.org/donate</a> <br>
          
 
-         <h3> Learn More! </h3>
+         <h3 class="mb"> Learn More! </h3>
          <a href="https://www.un.org/en/climatechange/what-is-climate-change">https://www.un.org/en/climatechange/what-is-climate-change</a> <br>
          
          <a href="https://science.nasa.gov/climate-change/">https://science.nasa.gov/climate-change/</a>  <br>
