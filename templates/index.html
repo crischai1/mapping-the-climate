@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <title>Hackathon project</title>
+
+      <!-- include leaflet css and javascript -->
+      <link rel="stylesheet" crossorigin=""
+            href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js"
+                  crossorigin=""></script>
+
+      <style type="text/css">
+            body {background-color: rgb(159, 224, 240);}
+            html, body {
+               height: 100%;
+               margin-left: 110px;
+               margin-right: 110px;
+            }
+            #map1 {
+               min-height: 100%; 
+            }
+            #map2 {
+               min-height: 100%; 
+            }
+            #map3 {
+               min-height: 100%; 
+            }
+            .imtip {
+               z-index: 100000000000;
+               /* position: absolute; */
+               /* bottom: -1000px;
+               right: 780px; */
+               /* width: 50%; */
+               margin-left: auto;
+               margin-right: auto;
+               text-align: center;
+               display: block;
+               width: 50%;
+               /* height:150px; */
+               scale: 0.7;
+            }
+            /* .centered {
+               margin-top: 100px; */
+               /* margin-bottom: 100px;
+               margin-right: 150px;
+               margin-left: 150px;
+            } */
+            .mb {
+               color: black;
+            }
+            .title {
+               color: black;
+               text-align: center;
+               font-size: 40px;
+            }
+            .centered {
+               display: block;
+               margin-left: auto;
+               margin-right: auto;
+               width: 700px;
+            }
+            hr {
+               height: 2px;
+               color: black;
+               background-color: black;
+
+            }
+      </style>
+   </head>
+
+   <body>
+      <h1 class="title">US Climate Maps</h1>
+      <p class="mb">This is a map of greenhouse gas emissions in the US. We wrote a short description for each of the top ten emitting states and other notable locations. You can click to read them below.</p>
+      <div class='custom-popup' id="map1"></div>
+
+      <script>
+         var latLngBounds = L.latLngBounds([[0, 0], [2100/1000, 2836/1000]]);
+
+         var map = L.map('map1', {
+            maxBounds : latLngBounds,
+            minZoom : 9
+         }).setView([2100/1000, 2836/1000], 9);
+
+         var imageUrl = 'http://127.0.0.1:5000/image1';
+
+         var imageOverlay = L.imageOverlay(imageUrl, latLngBounds).addTo(map);
+         map.fitBounds(latLngBounds);
+
+         {% for marker in markers1 %}
+         L.marker([{{ marker['lat'] }}, {{ marker['lon'] }}]).addTo(map)
+         .bindPopup("{{ marker['label'] }} <br> {{ marker['popup'] }}");
+         {% endfor %}
+      </script>
+
+      <hr>
+
+      <div id="map2"></div>
+      <img src="label2" class="imtip">
+
+      <script>
+         var latLngBounds = L.latLngBounds([[0, 0], [1296/1000, 1988/1000]]);
+
+         var map = L.map('map2', {
+            maxBounds : latLngBounds,
+            minZoom : 9
+         }).setView([1296/1000, 1988/1000], 9);
+
+         var imageUrl = 'http://127.0.0.1:5000/image2';
+
+         var altText = 'YAP';
+
+         var imageOverlay = L.imageOverlay(imageUrl, latLngBounds).addTo(map);
+
+         map.fitBounds(latLngBounds);
+         {% for marker in markers2 %}
+         L.marker([{{ marker['lat'] }}, {{ marker['lon'] }}]).addTo(map)
+         .bindPopup("{{ marker['label'] }} <br> {{ marker['popup'] }}");
+         {% endfor %}
+      </script>
+
+      <hr>
+
+      <p>This is a heatmap displaying the average temperature across the United States. Generally, points closer to the equator tend to be hotter and points further tend to be colder. This is due to the fact that the sun strikes the equator at the sharpest possible angle. Hence, the further a plot is from the equator, the less sharp this striking angle becomes and the less dense the heat is, resulting in a less hot temperature.
+      </p>
+
+      <div id="map3"></div>
+
+      <script>
+         var latLngBounds = L.latLngBounds([[0, 0], [1869/1000, 2800/1000]]);
+
+         var map = L.map('map3', {
+            maxBounds : latLngBounds,
+            minZoom : 9
+         }).setView([1869/1000, 2800/1000], 9);
+
+         var imageUrl = 'http://127.0.0.1:5000/image3';
+
+         var altText = 'YAP';
+
+         var imageOverlay = L.imageOverlay(imageUrl, latLngBounds).addTo(map);
+
+         map.fitBounds(latLngBounds);
+         {% for marker in markers3 %}
+         L.marker([{{ marker['lat'] }}, {{ marker['lon'] }}]).addTo(map)
+         .bindPopup("{{ marker['popup'] }}");
+         {% endfor %}
+      </script> 
+
+      <img src="label3" class="centered">
+      
+         <h3> Donate! </h3> 
+         <a href="https://www.nps.gov/getinvolved/donate.htm">https://www.nps.gov/getinvolved/donate.htm</a> <br>
+         <a href="https://act.sierraclub.org/donate/rc_connect__campaign_designform?id=70131000001hPsPAAU&formcampaignid=701Po00000Xrf5FIAR&ddi=N15ZSCZZ04">https://act.sierraclub.org/donate/rc_connect__campaign_designform?id=70131000001hPsPAAU&formcampaignid=701Po00000Xrf5FIAR&ddi=N15ZSCZZ04</a> <br>
+         <a href="https://www.thecarboncapturefoundation.org/donate">https://www.thecarboncapturefoundation.org/donate</a> <br>
+         
+
+         <h3> Learn More! </h3>
+         <a href="https://www.un.org/en/climatechange/what-is-climate-change">https://www.un.org/en/climatechange/what-is-climate-change</a> <br>
+         
+         <a href="https://science.nasa.gov/climate-change/">https://science.nasa.gov/climate-change/</a>  <br>
+         
+         <a href="https://science.nasa.gov/climate-change/what-is-climate-change/">https://science.nasa.gov/climate-change/what-is-climate-change/</a> <br>
+         
+         <a href="https://www.nature.org/en-us/what-we-do/our-priorities/tackle-climate-change/climate-change-stories/climate-change-frequently-asked-questions/">https://www.nature.org/en-us/what-we-do/our-priorities/tackle-climate-change/climate-change-stories/climate-change-frequently-asked-questions/</a> <br>
+
+
+   </body>
+</html>
